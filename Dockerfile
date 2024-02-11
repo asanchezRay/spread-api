@@ -10,7 +10,7 @@ COPY requirements.txt .
 # Instala las dependencias definidas en requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia el código de la aplicación al directorio de trabajo en la imagen
+# Crea un punto de montaje en el contenedor en /app
 VOLUME /app
 
 # Expone el puerto 8000 para que pueda ser accedido externamente
