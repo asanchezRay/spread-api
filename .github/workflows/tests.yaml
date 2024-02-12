@@ -23,7 +23,9 @@ jobs:
 
     - name: Run Tests with Coverage
       run: |
-        python -m coverage run -m unittest $(wildcard tests/*/test_*.py)
+        # Selecciona todos los archivos de prueba que coincidan con el patrón tests/*/test_*.py
+        TESTS=$(find tests/ -name "test_*.py")
+        python -m coverage run -m unittest $TESTS
         python -m coverage html
 
     - name: Upload Coverage Report
