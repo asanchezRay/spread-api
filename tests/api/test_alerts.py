@@ -1,16 +1,17 @@
 import unittest
 from unittest.mock import AsyncMock, patch
-from api.alerts import set_alert, polling_alerts, alert_spread
+from api.alerts import set_alert, polling_alerts, alert_spread, SetAlertResponseModel, PollingAlertResponseModel
 
 class TestAlerts(unittest.IsolatedAsyncioTestCase):
 
     async def test_set_alert(self):
         market = "BTC-CLP"
-        expected_result = {
-            "message": "Alert saved successfully",
-            "market": market,
-            "alert": 0.05,
-        }
+        expected_result = SetAlertResponseModel(
+            message= "Alert saved successfully",
+            market= market,
+            alert= 0.05
+        )
+
         mock_calculate_spread = AsyncMock(return_value=0.05)
         with patch('api.alerts.calculate_spread', mock_calculate_spread):
             result = await set_alert(market)
@@ -27,8 +28,8 @@ class TestAlerts(unittest.IsolatedAsyncioTestCase):
         with patch('api.alerts.calculate_spread', mock_calculate_spread):
             # Testing when current spread is greater than alert spread
             result = await polling_alerts(market)
-            self.assertTrue(result["is_greater"])
-            self.assertFalse(result["is_less"])
+            self.assertTrue(result.is_greater)
+            self.assertFalse(result.is_less)
             mock_calculate_spread.assert_called_once_with(market)
 
         current_spread = 0.04
@@ -36,8 +37,8 @@ class TestAlerts(unittest.IsolatedAsyncioTestCase):
         with patch('api.alerts.calculate_spread', mock_calculate_spread):
             # Testing when current spread is less than alert spread
             result = await polling_alerts(market)
-            self.assertTrue(result["is_less"])
-            self.assertFalse(result["is_greater"])
+            self.assertTrue(result.is_less)
+            self.assertFalse(result.is_greater)
             mock_calculate_spread.assert_called_once_with(market)
     
     async def test_polling_alerts_invalid_market(self):
