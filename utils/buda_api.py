@@ -18,6 +18,6 @@ async def calculate_spread(market: str) -> float:
         data = response.json()
         max_bid = float(data['ticker']['max_bid'][0])
         min_ask = float(data['ticker']['min_ask'][0])
-        return min_ask - max_bid
+        return float(min_ask - max_bid)
     else:
-        raise ValueError('An error occurred fetching markets')
+        raise ValueError('An error occurred fetching tickers')
