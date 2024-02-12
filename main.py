@@ -24,7 +24,6 @@ async def set_alert_wrapper(market):
 async def polling_alerts_wrapper(market):
     return await polling_alerts(market)
 
-
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
