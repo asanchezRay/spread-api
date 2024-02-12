@@ -106,5 +106,11 @@ Después de instalar y ejecutar la API en tu entorno local, estará funcionando 
     ```bash
     curl http://localhost:8000/polling/BTC-CLP
     ```
-
+## Test
+Para correr los test en local puede usar el siguiente comando en la raiz del proyecto, esto generara un reporte html con el coverage.
+```
+make test
+```
+> [!NOTE]
+> En el repositorio esta incluida la carpeta `htmlcov`, y dentro existe el archivo [`index.html`](https://github.com/asanchezRay/spread-api/blob/main/htmlcov/index.html), en el cual se encuentra el reporte ya generado, adicionalmente, estos test corren en GitHub Actions cada vez que se hace un Pull Request o un Push a la rama main.
 
