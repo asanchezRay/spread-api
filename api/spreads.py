@@ -8,4 +8,4 @@ async def get_spread(market: str):
 # Función para obtener el spread de todos los mercados
 async def get_spreads():
     markets = await get_all_markets()
-    return [await get_spread(market['id']) for market in markets if await get_spread(market['id']) is not None]
+    return [await get_spread(market['id']) for market in markets]
