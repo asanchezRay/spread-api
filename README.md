@@ -58,7 +58,7 @@ Una vez instalado, podrás utilizar Make para facilitar la construcción y ejecu
 
 ## Uso
 
-Después de instalar y ejecutar la API en tu entorno local, estará funcionando en un contenedor de Docker. Puedes realizar pruebas utilizando la documentación de Swagger disponible en http://localhost:8000/docs, a través de [Postman](https://www.postman.com) o ejecutando comandos en tu consola con curl.
+Después de instalar y ejecutar la API en tu entorno local, estará funcionando en un contenedor de Docker. Puedes realizar pruebas utilizando la documentación de Swagger disponible en http://localhost:8000/docs, a través de [Postman](https://www.postman.com) o ejecutando comandos en tu consola con `curl`.
 
 ### Endpoints
 #### Obtener el Spread de un Mercado Específico
